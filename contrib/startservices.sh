@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# default SERVER_NAME
+if [[ -z "$SERVER_NAME" ]]; then
+  SERVER_NAME=steem.io
+fi
+
 # generate nginx config on the fly and feed in any appropriate environment variables
 /bin/bash -c "envsubst '\$SERVER_NAME' < /etc/nginx/site.conf.template > /etc/nginx/sites-enabled/default"
 rm /etc/nginx/site.conf.template
